@@ -53,23 +53,29 @@
                         <th width="150px">Action</th>
                     </tr>
                     </thead>
-
+                    {% for product in p %}
                     <tbody>
                     <tr>
-                        <td>1</td>
-                        <td>T-Shirt <br> Created at : 25-Aug-2020</td>
-                        <td>Quality product in low cost</td>
-                        <td>
+                        <td>{{product.id}}</td>
+                        <td>{{product.title}} <br> {{product.created_at}}</td>
+                        <td>{{product.description}}</td>
+                    {%endfor%}
+                    
+                        <td>   
                             <dl class="row mb-0" style="height: 80px; overflow: hidden" id="variant">
                                 <dt class="col-sm-3 pb-0">
-                                    XL/ Black/ Full
+                                    {% for product1 in pv %}
+                                    {{product1.variant_title}}
+                                    {%endfor%}
                                 </dt>
+                                {% for product2 in pvp %}
                                 <dd class="col-sm-9">
                                     <dl class="row mb-0">
-                                        <dd class="col-sm-4 pb-0">Price : 200.0</dd>
-                                        <dd class="col-sm-8 pb-0">InStock : 50.</dd>
+                                        <dd class="col-sm-4 pb-0">Price : {{product2.price}}</dd>
+                                        <dd class="col-sm-8 pb-0">InStock : {{product2.stock}}.</dd>
                                     </dl>
                                 </dd>
+<!--                                 {% endfor %}
                                 <dt class="col-sm-3 pb-0">
                                     XL/ Black/ Half
                                 </dt>
@@ -108,7 +114,7 @@
                         </td>
                     </tr>
                     </tbody>
-
+ -->
                 </table>
             </div>
 

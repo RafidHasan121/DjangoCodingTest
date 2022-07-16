@@ -1,8 +1,11 @@
+from itertools import product
+from pyexpat import model
 from django.db import models
 from config.g_model import TimeStampMixin
 
 
 # Create your models here.
+
 class Variant(TimeStampMixin):
     title = models.CharField(max_length=40, unique=True)
     description = models.TextField()
