@@ -1,13 +1,11 @@
 {
     "private": true,
     "scripts": {
-        "dev": "npm run development",
-        "development": "cross-env NODE_ENV=development node_modules/webpack/bin/webpack.js --progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "watch": "npm run development -- --watch",
-        "watch-poll": "npm run watch -- --watch-poll",
-        "hot": "cross-env NODE_ENV=development node_modules/webpack-dev-server/bin/webpack-dev-server.js --inline --hot --disable-host-check --config=node_modules/laravel-mix/setup/webpack.config.js",
-        "prod": "npm run production",
-        "production": "cross-env NODE_ENV=production node_modules/webpack/bin/webpack.js --no-progress --hide-modules --config=node_modules/laravel-mix/setup/webpack.config.js"
+        "development": "mix",
+        "watch": "mix watch",
+        "watch-poll": "mix watch -- --watch-options-poll=1000",
+        "hot": "mix watch --hot",
+        "production": "mix --production"
     },
     "devDependencies": {
         "@babel/preset-react": "^7.0.0",
@@ -28,10 +26,13 @@
         "@fortawesome/fontawesome-free": "^5.14.0",
         "@ttskch/select2-bootstrap4-theme": "^1.4.0",
         "jquery.easing": "^1.4.1",
+        "npm-watch": "^0.11.0",
         "react-dropzone": "^11.5.1",
         "react-tagsinput": "^3.19.0",
         "select2": "^4.0.13",
         "vue-input-tag": "^2.0.7",
-        "vue2-dropzone": "^3.6.0"
+        "vue2-dropzone": "^3.6.0",
+        "webpack": "^5.73.0",
+        "webpack-cli": "^4.10.0"
     }
 }
