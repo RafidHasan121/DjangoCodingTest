@@ -10,7 +10,8 @@
 
 
     <div class="card">
-        <form action="" method="get" class="card-header">
+        <form action= "search/" method="POST" class="card-header">
+            {%csrf_token%}
             <div class="form-row justify-content-between">
                 <div class="col-md-2">
                     <input type="text" name="title" placeholder="Product Title" class="form-control">
@@ -58,25 +59,31 @@
                     <tr>
                         <td>{{product.id}}</td>
                         <td>{{product.title}} <br> {{product.created_at}}</td>
-                        <td>{{product.description}}</td>
-                    {%endfor%}
-                    
+                        <td>{{product.description}}</td>                    
                         <td>   
-                            <dl class="row mb-0" style="height: 80px; overflow: hidden" id="variant">
+                            <dl class="row mb-0" style="height: auto; overflow: hidden" id="variant">
                                 <dt class="col-sm-3 pb-0">
                                     {% for product1 in pv %}
+                                    {% if product1.product == product %}
                                     {{product1.variant_title}}
-                                    {%endfor%}
+                                    <br>
+                                    {% endif %}
+                                    {% endfor %}
                                 </dt>
-                                {% for product2 in pvp %}
+                                
                                 <dd class="col-sm-9">
-                                    <dl class="row mb-0">
-                                        <dd class="col-sm-4 pb-0">Price : {{product2.price}}</dd>
-                                        <dd class="col-sm-8 pb-0">InStock : {{product2.stock}}.</dd>
+                                    <dl class="row mb-4">
+                                        {% for product2 in pvp %}
+                                        {% if product2.product == product%}
+                                        <dd class="col-sm-4 ">Price : {{product2.price}}</dd>
+                                        <dd class="col-sm-8 ">InStock : {{product2.stock}}.</dd>
+                                        {%endif%}
+                                        {% endfor %}
                                     </dl>
                                 </dd>
-<!--                                 {% endfor %}
-                                <dt class="col-sm-3 pb-0">
+                                
+                                {% endfor %}                              
+                                <!-- <dt class="col-sm-3 pb-0">
                                     XL/ Black/ Half
                                 </dt>
                                 <dd class="col-sm-9">
@@ -102,19 +109,18 @@
                                         <dd class="col-sm-4 pb-0">Price : 200.0</dd>
                                         <dd class="col-sm-8 pb-0">InStock : 50.</dd>
                                     </dl>
-                                </dd>
+                                </dd> -->
                             </dl>
-                            <button onclick="$('#variant').toggleClass('h-auto')" class="btn btn-sm btn-link">Show more
-                            </button>
+                            <!-- <button onclick="$('#variant').toggleClass('h-auto')" class="btn btn-sm btn-link">Show more
+                            </button> -->
                         </td>
-                        <td>
+                        <!-- <td>
                             <div class="btn-group btn-group-sm">
                                 <a href="" class="btn btn-success">Edit</a>
                             </div>
-                        </td>
+                        </td> -->
                     </tr>
                     </tbody>
- -->
                 </table>
             </div>
 

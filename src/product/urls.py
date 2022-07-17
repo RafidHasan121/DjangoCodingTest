@@ -15,4 +15,5 @@ urlpatterns = [
     # Products URLs
     path('create/', CreateProductView.CreateProductView.as_view(), name='create.product'),
     path('list/', CreateProductView.product_view, name='list.product'),
+    path('list/search/', CreateProductView.search, name = 'list.search'),
 ]
